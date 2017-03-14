@@ -14,6 +14,7 @@
         <i class="fa fa-search"></i>
       </button>
     </form>
+    <%= link_to "Facebook Connect", omniauth_authorize_path(:user, :facebook)%>
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
@@ -29,6 +30,8 @@
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
+          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
